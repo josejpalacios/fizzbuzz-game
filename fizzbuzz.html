@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Include Bootstrap from CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Include Javascript files -->
+    <script type="text/javascript" src="fizzbuzzGameplay.js"></script>
+    <script type="text/javascript" src="fizzbuzzExtra.js"></script>
+
+    <!-- Page title -->
+    <title>Fizz Buzz Game</title>
+</head>
+<body style="background-color:skyblue">
+<br>
+<div class="container-fluid">
+    <h1 style="text-align:center">Fizz Buzz Game</h1>
+</div>
+<br>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body text-center">
+            <!--  Button to play game -->
+            <button id="game-button" class="btn basic" onclick="newGame()"><h3>Play</h3></button>
+            <!--  Game display -->
+            <div id="game" hidden>
+
+                <!-- Visuals for game -->
+                <div class="row">
+                    <!-- Number display -->
+                    <div class="col">
+                        <h1 style="text-align:center">Current Number</h1>
+                        <!-- Current number -->
+                        <h1 id="display-current-number" style="text-align:center">#</h1>
+                    </div>
+
+                    <!-- Gol display -->
+                    <div class="col">
+                        <h1 style="text-align:center">Goal</h1>
+                        <!-- Current number -->
+                        <h1 id="display-game-goal" style="text-align:center">###</h1>
+                    </div>
+
+                    <!-- Score display -->
+                    <div class="col">
+                        <h1 style="text-align:center">Current Score</h1>
+                        <h1 style="text-align:center">
+                            <!-- Correct score -->
+                            <span id="display-correct-score">#</span>
+                            <span>/</span>
+                            <!-- Total attempts -->
+                            <span id="display-total-attempts">#</span>
+                        </h1>
+                    </div>
+                </div>
+                <!-- End of visuals for game -->
+
+                <!-- Start of buttons for player -->
+                <div class="row">
+                    <!-- Button for Number -->
+                    <div class="col">
+                        <button type='button' id="number-button" class='btn btn-primary btn-block' onclick="numberButton()">Number</button>
+                    </div>
+
+                    <!-- Button for Fizz -->
+                    <div class="col">
+                        <button type='button' id="fizz-button" class='btn btn-primary btn-block' onclick="fizzButton()">Fizz</button>
+                    </div>
+
+                    <!-- Button for Buzz -->
+                    <div class="col">
+                        <button type='button' id="buzz-button" class='btn btn-primary btn-block' onclick="buzzButton()">Buzz</button>
+                    </div>
+
+                    <!-- Button for FizzBuzz -->
+                    <div class="col">
+                        <button type='button' id="fizzbuzz-button" class='btn btn-primary btn-block' onclick="fizzBuzzButton()">FizzBuzz</button>
+                    </div>
+                </div>
+                <!-- End of buttons for player -->
+
+                <br>
+                <!-- Area for player and opponents -->
+                <div class="card-deck" id="players"></div>
+
+                <br>
+                <!-- Bottom row buttons -->
+                <div class="row">
+                    <div class="col">
+                        <!-- Button to start a new game -->
+                        <button class="btn btn-secondary" onclick="newGame()"><h3>New Game</h3></button>
+                    </div>
+                    <div class="col">
+                        <!-- Button to go back to main menu -->
+                        <button class="btn btn-secondary" onclick="backToMainMenu()"><h3>Back</h3></button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <!-- End of game display -->
+
+            <!--  Button to show rules -->
+            <button id="rules-button" class="btn basic" onclick="displayRules()"><h3>Rules</h3></button>
+            <!-- Rules display -->
+            <div id="rules" hidden>
+                <h2>Rules</h2>
+                <h6>Select the number of CPU opponents to play against (Default 1).</h6>
+                <h6>Select the number to act as goal to count up too (Default 50).</h6>
+                <h6>Aim for your best score possible!</h6>
+                <h2>How to Play</h2>
+                <h6>Select Number if number is not divisible by 3 or 5.</h6>
+                <h6>Select Fizz if number is divisible by 3.</h6>
+                <h6>Select Buzz if number is divisible by 5.</h6>
+                <h6>Select FizzBuzz if number is divisible by 3 and 5.</h6>
+                <!-- Back to main menu button -->
+                <br>
+                <button class="btn btn-secondary" onclick="backToMainMenu()"><h3>Back</h3></button>
+            </div>
+            <br>
+            <!-- End of rules display -->
+
+            <!--  Button to show settings -->
+            <button id="settings-button" class="btn basic" onclick="displaySettings()"><h3>Settings</h3></button>
+            <!-- Settings display -->
+            <div id="settings" hidden>
+                <!-- Radio button options for number of opponents-->
+                <h1>Number of opponents</h1>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <!-- Radio button for 1 opponent default -->
+                        <input type="radio" class="form-check-input" name="opponents-group" value="1" checked>1
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <!-- Radio button for 2 opponents -->
+                        <input type="radio" class="form-check-input" name="opponents-group" value="2">2
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <!-- Radio button for 3 opponents -->
+                        <input type="radio" class="form-check-input" name="opponents-group" value="3">3
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <!-- Radio button for 4 opponents -->
+                        <input type="radio" class="form-check-input" name="opponents-group" value="4">4
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <!-- Radio button for 5 opponents -->
+                        <input type="radio" class="form-check-input" name="opponents-group" value="5">5
+                    </label>
+                </div>
+
+                <!-- Radio button options for game goal -->
+                <h1>Goal</h1>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <!-- Radio button for goal of 50 -->
+                        <input type="radio" class="form-check-input" name="goal-group" value="50" checked>50
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <!-- Radio button for goal of 100 -->
+                        <input type="radio" class="form-check-input" name="goal-group" value="100">100
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <!-- Radio button for goal of 150 -->
+                        <input type="radio" class="form-check-input" name="goal-group" value="150">150
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <!-- Radio button for goal of 200 -->
+                        <input type="radio" class="form-check-input" name="goal-group" value="200">200
+                    </label>
+                </div>
+                <br>
+
+                <!-- Button to go back to main menu -->
+                <br>
+                <button class="btn btn-secondary" onclick="backToMainMenu()"><h3>Back</h3></button>
+            </div>
+            <!-- End of settings display -->
+
+        </div>
+    </div>
+</div>
+<br>
+</body>
+</html>
