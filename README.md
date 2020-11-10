@@ -1,6 +1,6 @@
 # FizzBuzz Game
 
-This project is about creating an online version of FizzBuzz game. The website is hosted live at: http://www.fizzbuzz.com.s3-website.us-east-2.amazonaws.com
+This project is about creating an online version of FizzBuzz game. The game is hosted live at: http://www.fizzbuzz.com.s3-website.us-east-2.amazonaws.com
 
 ## Purpose
 
